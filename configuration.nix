@@ -84,6 +84,7 @@
     firefox
     git
     parted
+    clipit
   ];
 
   # Enable the OpenSSH daemon.

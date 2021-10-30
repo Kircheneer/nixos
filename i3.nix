@@ -150,6 +150,8 @@
           bindsym Escape mode "default"
           bindsym $mod+r mode "default"
   }
+
+  exec --no-startup-id clipit
   
   bindsym $mod+r mode "resize"
   
