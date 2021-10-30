@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       ./kitty.nix
+      ./i3.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -47,8 +48,6 @@
      ];
     };
   };
-
-  environment.etc."i3.conf".text = pkgs.callPackage ./i3.nix {};
 
   # Configure keymap in X11
   services.xserver.layout = "de";
