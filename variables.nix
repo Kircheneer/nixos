@@ -19,4 +19,9 @@ in rec {
     nord14 = "#A3BE8C";
     nord15 = "#B48EAD";
   };
+
+  font = {
+    name = "Jetbrains Mono";
+    size = "12";
+  };
 }

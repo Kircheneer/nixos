@@ -1,12 +1,12 @@
 { pgks, ... }:
 
 let 
-  colors = import ./colors.nix;
+  variables = import ./variables.nix;
 in {
   environment.etc."i3.conf".text = ''
     set $mod Mod4
     
-    font pango:monospace 8
+    font pango:${variables.font.name} ${variables.font.size}
     
     # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
     # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -155,21 +155,34 @@ in {
     }
 
     exec --no-startup-id clipit
+    exec_always --no-startup-id feh --bg-scale '/home/leo/wallpaper.png'
     
     bindsym $mod+r mode "resize"
     
     # Start i3bar to display a workspace bar (plus the system information i3status
     # finds out, if available)
     bar {
-            status_command i3status
+            font pango:${variables.font.name}, FontAwesome ${variables.font.size}
+            status_command i3status-rs /etc/i3status-rs.toml
+            colors {
+                    background ${variables.colors.nord0}
+                    statusline ${variables.colors.nord4}
+
+                    focused_workspace  ${variables.colors.nord0} ${variables.colors.nord10} #ffffff
+                    active_workspace   ${variables.colors.nord0} ${variables.colors.nord10} #ffffff
+                    inactive_workspace ${variables.colors.nord0} ${variables.colors.nord0} #ffffff
+                    urgent_workspace   ${variables.colors.nord0} ${variables.colors.nord11} #ffffff
+                    binding_mode       #2f343a #900000 #ffffff
+            }
+
     }
 
     # Colors
-    client.focused          ${colors.colors.nord6} ${colors.colors.nord6} ${colors.colors.nord1} ${colors.colors.nord1}
-    client.unfocused        ${colors.colors.nord6} ${colors.colors.nord6} ${colors.colors.nord3} ${colors.colors.nord1}
-    client.focused_inactice ${colors.colors.nord6} ${colors.colors.nord6} ${colors.colors.nord1} ${colors.colors.nord1}
-    client.placeholder      ${colors.colors.nord6} ${colors.colors.nord6} ${colors.colors.nord1} ${colors.colors.nord1}
-    client.urgent           ${colors.colors.nord11} ${colors.colors.nord11} ${colors.colors.nord13} ${colors.colors.nord1}
+    client.focused          ${variables.colors.nord6} ${variables.colors.nord6} ${variables.colors.nord1} ${variables.colors.nord1}
+    client.unfocused        ${variables.colors.nord6} ${variables.colors.nord6} ${variables.colors.nord1} ${variables.colors.nord1}
+    client.focused_inactice ${variables.colors.nord6} ${variables.colors.nord6} ${variables.colors.nord1} ${variables.colors.nord1}
+    client.placeholder      ${variables.colors.nord6} ${variables.colors.nord6} ${variables.colors.nord1} ${variables.colors.nord1}
+    client.urgent           ${variables.colors.nord11} ${variables.colors.nord11} ${variables.colors.nord13} ${variables.colors.nord1}
     client.background #ffffff
   '';
 }

@@ -6,6 +6,8 @@
       ./hardware-configuration.nix
       ./kitty.nix
       ./i3.nix
+      ./i3status-rs.nix
+      ./polybar.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -42,7 +44,7 @@
       configFile = "/etc/i3.conf";
       extraPackages = with pkgs; [
         dmenu
-        i3status
+        i3status-rust
         i3lock
         i3blocks
      ];
@@ -55,6 +57,8 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  services.picom.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -84,6 +88,12 @@
     git
     parted
     clipit
+    feh
+    picom
+  ];
+
+  fonts.fonts = with pkgs; [
+    nerdfonts
   ];
 
   # Enable the OpenSSH daemon.
