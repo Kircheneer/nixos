@@ -155,9 +155,13 @@ in {
     }
 
     exec --no-startup-id clipit
-    exec_always --no-startup-id feh --bg-scale '/home/leo/wallpaper.png'
+    exec_always --no-startup-id feh --bg-scale '~/Pictures/wallpaper.png'
     
     bindsym $mod+r mode "resize"
+
+    for_window [class=".*"] border pixel 0
+    gaps inner 15
+    gaps outer 15
     
     # Start i3bar to display a workspace bar (plus the system information i3status
     # finds out, if available)

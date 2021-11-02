@@ -41,6 +41,7 @@
 
     windowManager.i3 = {
       enable = true;
+      package = pkgs.i3-gaps;
       configFile = "/etc/i3.conf";
       extraPackages = with pkgs; [
         dmenu
