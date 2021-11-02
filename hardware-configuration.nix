@@ -8,22 +8,38 @@
 
   boot.initrd.availableKernelModules = [ "ata_piix" "ohci_pci" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/9e889ebe-07d3-4166-8706-2e1a5498353c";
-      fsType = "ext4";
+    { device = "none";
+      fsType = "tmpfs";
+      options = [ "defaults" "size=2G" "mode=755" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/0788-85D6";
+    { device = "/dev/disk/by-uuid/42DD-FC23";
       fsType = "vfat";
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/10614e93-2981-48d7-862b-6dfa27200980"; }
-    ];
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/df14c32a-fcf2-4574-8539-b3880b93b03e";
+      fsType = "ext4";
+    };
+
+  fileSystems."/etc/nixos" =
+    { device = "/nix/persist/etc/nixos";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
+  fileSystems."/var/log" =
+    { device = "/nix/persist/var/log";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
+  swapDevices = [ ];
 
   virtualisation.virtualbox.guest.enable = true;
 }
