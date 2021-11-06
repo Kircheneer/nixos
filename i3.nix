@@ -155,7 +155,7 @@ in {
     }
 
     exec --no-startup-id clipit
-    exec_always --no-startup-id feh --bg-scale '~/Pictures/wallpaper.png'
+    exec_always --no-startup-id feh --bg-scale '/home/leo/Pictures/wallpaper.png'
     
     bindsym $mod+r mode "resize"
 

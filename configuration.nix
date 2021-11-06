@@ -8,7 +8,10 @@
       ./i3.nix
       ./i3status-rs.nix
       ./polybar.nix
+      ./impermanence.nix
     ];
+
+  nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -60,6 +63,7 @@
   services.printing.enable = true;
 
   services.picom.enable = true;
+  virtualisation.docker.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -70,7 +74,9 @@
     initialHashedPassword = "$6$u3pdfBgpjLx$xHhUMr3bvRGRcmOEjkn.6mXV1Up/Wvv7CfaSx8T8yFNtPUBuA3.LLFiqPL74e5WI3/VHRZg6pQEAjQtHc8jDt1";
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    createHome = true;
+    home = "/home/leo";
+    extraGroups = [ "wheel" "docker" ];
   };
 
   programs.fish.enable = true;
@@ -89,28 +95,15 @@
     firefox
     git
     parted
-    clipit
     feh
     picom
+    jetbrains.pycharm-community
   ];
 
   fonts.fonts = with pkgs; [
     font-awesome
     font-awesome_4
   ];
-
-  environment.etc."machine-id".source
-    = "/nix/persist/etc/machine-id";
-
-
-  environment.etc."ssh/ssh_host_rsa_key".source
-    = "/nix/persist/etc/ssh/ssh_host_rsa_key";
-  environment.etc."ssh/ssh_host_rsa_key.pub".source
-    = "/nix/persist/etc/ssh/ssh_host_rsa_key.pub";
-  environment.etc."ssh/ssh_host_ed25519_key".source
-    = "/nix/persist/etc/ssh/ssh_host_ed25519_key";
-  environment.etc."ssh/ssh_host_ed25519_key.pub".source
-    = "/nix/persist/etc/ssh/ssh_host_ed25519_key.pub";
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

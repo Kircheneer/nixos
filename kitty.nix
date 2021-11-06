@@ -7,8 +7,8 @@ in {
     font_size ${variables.font.size}
     font_family ${variables.font.name}
 
-    foreground ${variables.colors.nord0}
-    background ${variables.colors.nord6}
+    background ${variables.colors.nord0}
+    foreground ${variables.colors.nord6}
     selection_foreground ${variables.colors.nord3}
     selection_background ${variables.colors.nord6}
     url_color ${variables.colors.nord7}
