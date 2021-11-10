@@ -98,6 +98,10 @@
     feh
     picom
     jetbrains.pycharm-community
+    python38
+    python38Packages.poetry
+    htop
+    slack
   ];
 
   fonts.fonts = with pkgs; [

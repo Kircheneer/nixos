@@ -14,7 +14,9 @@ in {
       "/etc/nixos"
       "/var/log"
       "/home/leo/Pictures"
+      "/home/leo/git"
       "/home/leo/.mozilla"
+      "/home/leo/.cache"
       "/home/leo/.local/share/fish"
       # PyCharm
       "/home/leo/.config/JetBrains"
