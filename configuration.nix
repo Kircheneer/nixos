@@ -4,11 +4,11 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./kitty.nix
       ./i3.nix
       ./i3status-rs.nix
-      ./polybar.nix
       ./impermanence.nix
+      ./kitty.nix
+      ./maestral.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -88,20 +88,33 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    fish
+    # terminal applications
     (import ./vim.nix)
+    fish
     wget
     kitty
-    firefox
     git
     parted
     feh
-    picom
-    jetbrains.pycharm-community
     python38
     python38Packages.poetry
     htop
+    # graphical applications
+    firefox
+    jetbrains.pycharm-community
     slack
+    lxappearance
+    keepassxc
+    vscode-with-extensions
+    obsidian
+    thunderbird
+    # system applications
+    picom
+    dropbox
+    nordic
+    dunst
+    maestral
+    libnotify
   ];
 
   fonts.fonts = with pkgs; [

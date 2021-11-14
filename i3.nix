@@ -87,13 +87,13 @@ in {
     
     # Define names for default workspaces for which we configure key bindings later on.
     # We use variables to avoid repeating the names in multiple places.
-    set $ws1 "1"
-    set $ws2 "2"
-    set $ws3 "3"
-    set $ws4 "4"
-    set $ws5 "5"
-    set $ws6 "6"
-    set $ws7 "7"
+    set $ws1 "1"
+    set $ws2 "2"
+    set $ws3 "3"
+    set $ws4 "4"
+    set $ws5 "5"
+    set $ws6 "6"
+    set $ws7 "7"
     set $ws8 "8"
     set $ws9 "9"
     set $ws10 "10"
@@ -121,6 +121,13 @@ in {
     bindsym $mod+Shift+8 move container to workspace number $ws8
     bindsym $mod+Shift+9 move container to workspace number $ws9
     bindsym $mod+Shift+0 move container to workspace number $ws10
+
+    assign [class="Firefox"] $ws2
+    assign [class="jetbrains-pycharm-ce"] $ws3
+    assign [class="obsidian"] $ws4
+    assign [class="Slack"] $ws5
+    assign [class="Thunderbird"] $ws6
+    assign [class="KeePassXC"] $ws7
     
     # reload the configuration file
     bindsym $mod+Shift+c reload
@@ -156,6 +163,7 @@ in {
 
     exec --no-startup-id clipit
     exec_always --no-startup-id feh --bg-scale '/home/leo/Pictures/wallpaper.png'
+    exec_always --no-startup-id dunst -conf '/etc/.dunstrc'
     
     bindsym $mod+r mode "resize"
 
