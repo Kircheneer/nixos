@@ -9,6 +9,7 @@
       ./impermanence.nix
       ./kitty.nix
       ./maestral.nix
+      ./home-manager.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -89,7 +90,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # terminal applications
-    (import ./vim.nix)
+    vim
     fish
     wget
     kitty

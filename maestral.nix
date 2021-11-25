@@ -6,7 +6,7 @@ in {
   environment.etc."maestral/maestral.ini".text = ''
     [main]
     path = /home/leo/Maestral
-    excluded_items = ['/dateianfragen', '/keys', '/apps', '/keepass', '/sent files', '/bilder', '/images', '/backups', '/videos', '/musik', '/leo kirchner', '/lizenzen', '/dokumente', '/brummi']
+    excluded_items = ['/dateianfragen', '/keys', '/apps', '/kp', '/sent files', '/bilder', '/images', '/backups', '/videos', '/musik', '/leo kirchner', '/lizenzen', '/dokumente', '/brummi']
     version = 15.0.0
     
     [account]
