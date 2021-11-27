@@ -3,7 +3,7 @@
 let
   impermanence = builtins.fetchTarball {
     url =
-      "https://github.com/nix-community/impermanence/archive/master.tar.gz";
+      "https://github.com/nix-community/impermanence/archive/0616c64b0ebcf08cc74db7820e74b807274246f6.tar.gz";
   };
 in {
   # Import the nixos module.
